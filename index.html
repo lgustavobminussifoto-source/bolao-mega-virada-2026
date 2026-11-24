@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bolão Mega da Virada 2026</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Bolão entre amigos da Mega da Virada 2026">
+<meta name="theme-color" content="#0a2a20">
+<script src="qr.js" defer></script>
+<script src="app.js" defer></script>
+<style>
+  @font-face{font-family:Fraunces;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/fraunces-latin-600-normal.woff2) format('woff2')}
+  @font-face{font-family:Fraunces;font-style:normal;font-weight:800;font-display:swap;src:url(fonts/fraunces-latin-800-normal.woff2) format('woff2')}
+  @font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format('woff2')}
+  @font-face{font-family:Inter;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format('woff2')}
+  @font-face{font-family:Inter;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format('woff2')}
+  @font-face{font-family:Inter;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format('woff2')}
+  :root{
+    --noite:#0a2a20; --noite2:#0f3a2c; --verde:#1f8a5b; --verde-claro:#2fb37a;
+    --ouro:#f0c35a; --ouro-esc:#c9962b; --creme:#fbf7ee; --papel:#ffffff;
+    --tinta:#1b2420; --cinza:#5d6b64; --linha:#e5dfd0; --erro:#c0392b;
+    --r:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--tinta);background:var(--creme);line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0}
+  a{color:var(--verde)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+  /* HERO */
+  .hero{background:radial-gradient(120% 90% at 80% 0%,#174d3a 0%,var(--noite) 60%);color:#fff;padding:44px 0 56px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#f0c35a 1px,transparent 1.5px),radial-gradient(#ffffff55 1px,transparent 1.5px);background-size:90px 90px,53px 53px;background-position:0 0,25px 31px;opacity:.35;pointer-events:none}
+  .selo{display:inline-flex;gap:8px;align-items:center;background:#ffffff14;border:1px solid #ffffff26;border-radius:99px;padding:6px 14px;font-size:13px;font-weight:600;letter-spacing:.3px}
+  .hero h1{font-size:clamp(34px,8vw,56px);font-weight:800;margin:18px 0 10px;letter-spacing:-.5px}
+  .hero h1 em{font-style:normal;color:var(--ouro)}
+  .hero p.sub{font-size:17px;color:#d7e6df;max-width:560px;margin:0 0 26px}
+  .premio{position:relative;margin:4px 0 22px;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg,#f0c35a 0%,#f7dc8f 55%,#e8b443 100%);color:#2b1f00;box-shadow:0 12px 40px -18px #f0c35a}
+  .premio small{display:block;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;opacity:.75}
+  .premio b{display:block;font-family:Fraunces,serif;font-size:clamp(34px,10vw,52px);line-height:1.05;margin:4px 0 2px}
+  .premio span{font-size:13.5px;opacity:.85}
+  .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:26px}
+  .kpi{background:#ffffff10;border:1px solid #ffffff1f;border-radius:14px;padding:12px 14px}
+  .kpi b{display:block;font-family:Fraunces,serif;font-size:24px;color:var(--ouro)}
+  .kpi span{font-size:12.5px;color:#c4d6cd}
+  .contagem{display:flex;gap:8px;margin:0 0 26px;flex-wrap:wrap}
+  .contagem div{background:#00000033;border-radius:12px;padding:8px 12px;min-width:64px;text-align:center}
+  .contagem b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+  .contagem small{font-size:11px;color:#b7cbc1;text-transform:uppercase;letter-spacing:.6px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:15px 22px;font:600 16px Inter,sans-serif;cursor:pointer;text-decoration:none;transition:transform .1s,filter .15s}
+  .btn:active{transform:scale(.98)}
+  .btn-ouro{background:var(--ouro);color:#2b1f00}
+  .btn-ouro:hover{filter:brightness(1.05)}
+  .btn-verde{background:var(--verde);color:#fff}
+  .btn-ghost{background:transparent;border:1.5px solid var(--linha);color:var(--tinta)}
+  .btn[disabled]{opacity:.55;cursor:not-allowed}
+
+  /* SEÇÕES */
+  section{padding:40px 0 8px}
+  .rotulo{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--ouro-esc);margin-bottom:6px}
+  section h2{font-size:28px;margin-bottom:16px}
+  .cards{display:grid;gap:12px}
+  .card{background:var(--papel);border:1px solid var(--linha);border-radius:var(--r);padding:18px 18px}
+  .card h3{font-size:18px;margin-bottom:6px}
+  .card p{margin:0;color:var(--cinza);font-size:15px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .regra{display:flex;gap:14px;align-items:flex-start}
+  .regra .ic{flex:0 0 40px;height:40px;border-radius:12px;background:#eaf5ef;display:grid;place-items:center;font-size:20px}
+
+  .linha-tempo{position:relative;margin:6px 0 0;padding-left:26px}
+  .linha-tempo:before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--linha)}
+  .marco{position:relative;padding:0 0 18px}
+  .marco:before{content:"";position:absolute;left:-23px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 4px #e3f2ea}
+  .marco.destaque:before{background:var(--ouro-esc);box-shadow:0 0 0 4px #f8ecd0}
+  .marco b{display:block;font-size:15px}
+  .marco span{color:var(--cinza);font-size:14.5px}
+
+  details{background:var(--papel);border:1px solid var(--linha);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+  summary{font-weight:600;cursor:pointer;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";float:right;color:var(--verde);font-weight:700}
+  details[open] summary:after{content:"–"}
+  details p{color:var(--cinza);margin:10px 0 0;font-size:15px}
+
+  /* FORM */
+  #inscricao{padding-bottom:40px}
+  .form-box{background:var(--papel);border:1px solid var(--linha);border-radius:20px;padding:22px;box-shadow:0 10px 40px -20px #0a2a2040}
+  .passo{display:flex;align-items:center;gap:10px;margin:6px 0 14px;font-weight:700;font-size:15px}
+  .passo i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--noite);color:var(--ouro);display:grid;place-items:center;font-size:13px}
+  .bloco{border-top:1px dashed var(--linha);padding-top:18px;margin-top:20px}
+  label{display:block;font-weight:600;font-size:14px;margin:12px 0 6px}
+  label small{font-weight:400;color:var(--cinza)}
+  input[type=text],input[type=tel]{width:100%;padding:13px 14px;border:1.5px solid var(--linha);border-radius:12px;font:16px Inter,sans-serif;background:#fffdf8;color:var(--tinta)}
+  input:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px #1f8a5b22}
+  input.invalido{border-color:var(--erro)}
+  .msg-campo{color:var(--erro);font-size:13px;min-height:0;margin-top:4px}
+  .seletor{display:flex;align-items:center;gap:12px;margin-top:4px}
+  .seletor button{width:48px;height:48px;border-radius:12px;border:1.5px solid var(--linha);background:#fffdf8;font-size:22px;font-weight:700;color:var(--noite);cursor:pointer}
+  .seletor output{font-family:Fraunces,serif;font-size:34px;min-width:52px;text-align:center}
+  .total{margin-top:14px;background:var(--noite);color:#fff;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+  .total b{font-family:Fraunces,serif;font-size:28px;color:var(--ouro)}
+  .total small{color:#bcd0c6;font-size:13px}
+
+  .pix{display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:start}
+  #qr{background:#fff;border:1px solid var(--linha);border-radius:14px;padding:10px;aspect-ratio:1;display:grid;place-items:center}
+  #qr svg,#qr img{width:100%;height:auto}
+  .chave{background:#f4f1e8;border-radius:12px;padding:12px 14px;font-family:ui-monospace,Menlo,monospace;font-size:14px;word-break:break-all}
+  .pix .btns{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+  .pix .btns .btn{padding:12px 14px;font-size:15px}
+  .info-titular{font-size:14px;color:var(--cinza);margin-top:8px}
+  .aviso{background:#fff6dd;border:1px solid #f0d78e;border-radius:12px;padding:12px 14px;font-size:14px;margin-top:12px}
+  .aviso.erro{background:#fdecea;border-color:#f3b7b0;color:#8a2219}
+
+  .upload{border:2px dashed var(--linha);border-radius:14px;padding:18px;text-align:center;cursor:pointer;background:#fffdf8}
+  .upload.ok{border-color:var(--verde-claro);background:#effaf4}
+  .upload input{display:none}
+  .ou{text-align:center;color:var(--cinza);font-size:13px;margin:10px 0 0}
+  .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px;color:var(--cinza)}
+  .check input{margin-top:3px;width:18px;height:18px;accent-color:var(--verde)}
+  #enviar{width:100%;margin-top:18px;font-size:17px;padding:17px}
+
+  .sucesso{text-align:center;padding:10px 0}
+  .sucesso .big{font-size:56px}
+  .protocolo{display:inline-block;background:var(--noite);color:var(--ouro);font-family:ui-monospace,monospace;font-size:20px;padding:10px 16px;border-radius:12px;margin:12px 0}
+  footer{color:var(--cinza);font-size:13px;text-align:center;padding:24px 20px 40px}
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(120px);background:var(--noite);color:#fff;padding:12px 18px;border-radius:12px;font-weight:600;transition:transform .25s;z-index:9}
+  .toast.on{transform:translateX(-50%) translateY(0)}
+  .spinner{width:18px;height:18px;border:2.5px solid #ffffff66;border-top-color:#fff;border-radius:50%;animation:g .8s linear infinite}
+  @keyframes g{to{transform:rotate(360deg)}}
+  .hide{display:none!important}
+  @media (max-width:560px){
+    .grid2{grid-template-columns:1fr}
+    .pix{grid-template-columns:1fr}
+    #qr{max-width:220px;margin:0 auto}
+    .kpi b{font-size:20px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="selo">🍀 Bolão entre amigos · Bolão Oficial Caixa</span>
+    <h1>Mega da Virada <em>2026</em></h1>
+    <div class="premio"><small>Prêmio estimado pela Caixa</small><b>+ de R$ 1 bilhão</b><span>Sorteio em 1º de janeiro de 2027, às 11h · o prêmio não acumula</span></div>
+    <p class="sub">Cota de <b class="js-valor">R$ 25,00</b>, sem taxa nenhuma: 100% do dinheiro vira aposta oficial registrada na lotérica. Você recebe no seu WhatsApp a foto de todos os bilhetes e os seus recibos.</p>
+
+    <div class="kpis">
+      <div class="kpi"><b class="js-valor">R$ 25</b><span>por cota</span></div>
+      <div class="kpi"><b id="kpiCotas">—</b><span>cotas confirmadas</span></div>
+      <div class="kpi"><b id="kpiVagas">—</b><span>cotas ainda livres</span></div>
+    </div>
+
+    <div id="contagemBox">
+      <div class="rotulo" style="color:#d9b45a">Adesões encerram em 20/12 às 20h00</div>
+      <div class="contagem" id="contagem">
+        <div><b id="cd-d">--</b><small>dias</small></div>
+        <div><b id="cd-h">--</b><small>horas</small></div>
+        <div><b id="cd-m">--</b><small>min</small></div>
+        <div><b id="cd-s">--</b><small>seg</small></div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-ouro" id="ctaTopo">Quero minhas cotas →</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <div class="rotulo">Regras</div>
+    <h2>Como funciona</h2>
+    <div class="cards">
+      <div class="card regra"><div class="ic">🎟️</div><div><h3>Cada cota custa <span class="js-valor">R$ 25,00</span></h3><p>Até 20 por inscrição (quer mais, faça outra). O bolão tem <b>limite de 100 cotas no total</b>, por ordem de inscrição. Não existe taxa administrativa: 100% do valor arrecadado vira aposta oficial.</p></div></div>
+      <div class="card regra"><div class="ic">⏰</div><div><h3>Prazo: 20/12/2026 às 20h00</h3><p>Inscrição e Pix até esse horário, sem prorrogação. Pix que chegar depois será devolvido.</p></div></div>
+      <div class="card regra"><div class="ic">⚖️</div><div><h3>Prêmio proporcional às cotas</h3><p>Sua parte = suas cotas ÷ total de cotas confirmadas. Ex.: com 100 cotas, cada cota vale 1% de qualquer prêmio. Se fôssemos os únicos acertadores de R$ 1 bilhão, isso daria cerca de R$ 10 milhões por cota.</p></div></div>
+      <div class="card regra"><div class="ic">✅</div><div><h3>Só vale cota paga e conferida</h3><p>Cada Pix é conferido no extrato bancário. Sua cota passa a valer quando o status fica <b>PAGO</b>.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rotulo">Estratégia</div>
+    <h2>Como os jogos serão feitos</h2>
+    <div class="grid2">
+      <div class="card"><h3>🎯 Jogos múltiplos</h3><p>Com o caixa fechado, montamos volantes com mais dezenas (8, 9, 10…), que multiplicam as combinações cobertas.</p></div>
+      <div class="card"><h3>🎲 Ninguém escolhe os números</h3><p>Os jogos são gerados por computador, de forma aleatória. Sem palpites, sem datas de aniversário e sem preferência de ninguém.</p></div>
+      <div class="card"><h3>🪙 Jogos de 8+ dezenas</h3><p>Pela regra da Caixa, bolões com muitas cotas usam jogos de 8 dezenas ou mais. A combinação escolhida aproveita o máximo do caixa, e o que sobrar vira apostas extras na lotérica até zerar. Tudo aparece na prestação de contas.</p></div>
+      <div class="card"><h3>📋 Planilha de controle</h3><p>Orçamento, custo de cada jogo e divisão do prêmio ficam numa planilha que fecha centavo por centavo.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rotulo">Cronograma</div>
+    <h2>Datas</h2>
+    <div class="linha-tempo">
+      <div class="marco"><b>Agora até 20/12 · 20h00</b><span>Inscrição neste formulário + Pix + comprovante.</span></div>
+      <div class="marco"><b>21/12 ou 22/12</b><span>Registro presencial dos jogos em lotérica credenciada, como Bolão Oficial da Caixa.</span></div>
+      <div class="marco destaque"><b>Até 22/12 · 18h00</b><span>Você recebe no WhatsApp cadastrado: fotos de todos os bilhetes oficiais, a tabela final com o % de cada participante e a foto dos seus recibos.</span></div>
+      <div class="marco"><b>1º/01/2027 · 11h</b><span>Sorteio da Mega da Virada (a Caixa transferiu o sorteio de 31/12 para o dia 1º). 🎆</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rotulo">Transparência</div>
+    <h2>Recibos e segurança</h2>
+    <div class="cards">
+      <div class="card"><p>📸 <b>Todos recebem a mesma prestação de contas</b> no WhatsApp cadastrado, antes do sorteio: fotos de <b>todos</b> os bilhetes e a tabela com nome, cotas e % de cada participante. A tabela não leva CPF nem telefone de ninguém.</p></div>
+      <div class="card"><p>🔒 <b>Seus dados ficam protegidos.</b> CPF, WhatsApp e comprovante vão direto para uma planilha e uma pasta privadas da organização. Não são publicados, não são compartilhados e servem só para os recibos e a prestação de contas do bolão. Esta página não usa cookies nem rastreadores.</p></div>
+      <div class="card"><p>🧾 <b>1 cota sua = 1 recibo oficial da Caixa em cada bolão.</b> Cada bolão é registrado na lotérica com exatamente o total de cotas do grupo. Os recibos ficam guardados com a organização, com seu <b>Nome Completo e CPF</b> no verso (por isso pedimos o CPF). Se sair prêmio, você recebe os seus recibos e resgata a sua parte direto na Caixa, no seu nome.</p></div>
+      <div class="card"><p>🔍 <b>Dupla conferência</b>: comprovante enviado por você + conferência no extrato do banco. A planilha só soma cotas com Pix confirmado.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rotulo">Dúvidas</div>
+    <h2>Perguntas frequentes</h2>
+    <details><summary>Posso pagar pela conta de outra pessoa?</summary><p>Pode. Só preencha o campo "Titular da conta pagadora" com o nome de quem fez o Pix, para conseguirmos achar no extrato.</p></details>
+    <details><summary>Quero mais de 20 cotas. E agora?</summary><p>Faça uma segunda inscrição com o mesmo CPF. As cotas são somadas automaticamente pelo CPF.</p></details>
+    <details><summary>Meu recibo oficial é individual?</summary><p>Sim. Cada bolão é registrado com o mesmo número de cotas do grupo (no máximo 100), então cada cota sua vale 1 recibo da Caixa em cada bolão. Em caso de prêmio, você resgata a sua parte direto na Caixa, sem precisar de repasse de ninguém.</p></details>
+    <details><summary>Por que o limite de 100 cotas?</summary><p>É o máximo de cotas que a Caixa permite num bolão oficial. Com esse teto, cada cota do grupo vira exatamente um recibo oficial. Quando acabar, a página mostra "esgotado".</p></details>
+    <details><summary>Se ganharmos, como o prêmio é dividido?</summary><p>Na proporção exata das cotas pagas: suas cotas ÷ total de cotas confirmadas. A tabela com o % de todos é enviada no WhatsApp de cada participante antes do sorteio.</p></details>
+    <details><summary>O prêmio tem imposto?</summary><p>A Caixa já desconta na fonte os 30% de Imposto de Renda antes de pagar. Como cada participante resgata a própria parte com os seus recibos, ninguém precisa repassar dinheiro a ninguém. Só é preciso informar o valor recebido na sua declaração de IR.</p></details>
+    <details><summary>Quais as chances de ganhar?</summary><p>Loteria é sorte. Com R$ 2.500 em jogos de 8 e 10 dezenas, o grupo cobre cerca de 400 combinações, o que dá uma chance de cerca de 1 em 123 mil de acertar a sena. É muito melhor que uma aposta simples (1 em 50 milhões), mas continua sendo pequena. Jogue só o que pode gastar por diversão.</p></details>
+    <details><summary>E se eu pagar depois das 20h do dia 20/12?</summary><p>O Pix será devolvido. Depois desse horário o caixa fecha e os jogos são montados com o valor exato arrecadado.</p></details>
+  </section>
+
+  <section id="inscricao">
+    <div class="rotulo">Inscrição</div>
+    <h2>Garanta suas cotas</h2>
+
+    <div id="avisoConfig" class="aviso erro hide">⚠️ <b>Modo de configuração:</b> a chave Pix ainda não foi preenchida no CONFIG do script. Não divulgue o link antes de ajustar.</div>
+    <div id="encerrado" class="aviso erro hide">🔒 <b>Adesões encerradas</b> em 20/12/2026 às 20h00. Você vai receber as fotos dos bilhetes no seu WhatsApp.</div>
+
+    <form id="form" class="form-box" novalidate>
+      <div class="passo"><i>1</i> Seus dados</div>
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" autocomplete="name" placeholder="Como no seu documento" required>
+      <div class="msg-campo" data-for="nome"></div>
+
+      <label for="cpf">CPF <small>(vai no verso do recibo oficial)</small></label>
+      <input type="tel" id="cpf" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" required>
+      <div class="msg-campo" data-for="cpf"></div>
+
+      <label for="whatsapp">WhatsApp <small>(é por ele que você recebe bilhetes e recibos)</small></label>
+      <input type="tel" id="whatsapp" inputmode="numeric" autocomplete="tel" placeholder="(87) 99999-9999" maxlength="15" required>
+      <div class="msg-campo" data-for="whatsapp"></div>
+
+      <div class="hp" aria-hidden="true"><label for="site">Não preencha</label><input type="text" id="site" tabindex="-1" autocomplete="off"></div>
+      <label for="titular">Titular da conta pagadora <small>(só se o Pix sair da conta de outra pessoa)</small></label>
+      <input type="text" id="titular" placeholder="Deixe em branco se for você mesmo">
+
+      <div class="bloco">
+        <div class="passo"><i>2</i> Quantas cotas?</div>
+        <div class="seletor">
+          <button type="button" id="menos" aria-label="Diminuir">−</button>
+          <output id="qtd">1</output>
+          <button type="button" id="mais" aria-label="Aumentar">+</button>
+          <span style="color:var(--cinza);font-size:14px">cota(s)</span>
+        </div>
+        <div class="total">
+          <div><small>Valor do seu Pix</small><br><span id="formula" style="font-size:13px;color:#bcd0c6">1 × R$ 25,00</span></div>
+          <b id="valorTotal">R$ 25,00</b>
+        </div>
+      </div>
+
+      <div class="bloco">
+        <div class="passo"><i>3</i> Faça o Pix</div>
+        <div class="pix">
+          <div id="qr" aria-label="QR Code Pix"></div>
+          <div>
+            <div style="font-size:13px;color:var(--cinza);margin-bottom:4px">Chave Pix do bolão</div>
+            <div class="chave" id="chaveTxt">—</div>
+            <div class="info-titular" id="titularTxt"></div>
+            <div class="btns">
+              <button type="button" class="btn btn-verde" id="copiarCola">📋 Copiar Pix Copia e Cola (com valor)</button>
+              <button type="button" class="btn btn-ghost" id="copiarChave">Copiar só a chave Pix</button>
+            </div>
+          </div>
+        </div>
+        <div class="aviso">💡 O <b>Pix Copia e Cola</b> já vai com o valor certo. Cole no app do seu banco, em Pix › Copia e Cola. Confira se o recebedor é <b id="titularConf">—</b> antes de confirmar.</div>
+      </div>
+
+      <div class="bloco">
+        <div class="passo"><i>4</i> Envie o comprovante</div>
+        <label class="upload" id="uploadBox" for="arquivo">
+          <input type="file" id="arquivo" accept="image/*,application/pdf">
+          <div id="uploadTxt">📎 <b>Toque para anexar o comprovante</b><br><small style="color:var(--cinza)">Print ou PDF, até 8 MB</small></div>
+        </label>
+        <p class="ou">ou, se preferir,</p>
+        <label for="txid">ID da transação Pix <small>(código E2E que aparece no comprovante)</small></label>
+        <input type="text" id="txid" placeholder="Ex.: E12345678202612201930abcdEFGH123">
+        <div class="msg-campo" data-for="comprovante"></div>
+
+        <label class="check" style="margin-top:16px"><input type="checkbox" id="aceite"> <span>Li e concordo com as regras: prazo improrrogável, divisão proporcional às cotas e uso do meu Nome/CPF apenas nos recibos do bolão.</span></label>
+        <div class="msg-campo" data-for="aceite"></div>
+
+        <button type="submit" class="btn btn-ouro" id="enviar">Confirmar inscrição</button>
+        <div id="erroGeral" class="aviso erro hide"></div>
+      </div>
+    </form>
+
+    <div id="sucesso" class="form-box sucesso hide">
+      <div class="big">🍀</div>
+      <h2 style="margin:6px 0">Inscrição recebida!</h2>
+      <p style="color:var(--cinza);margin:0">Seu protocolo:</p>
+      <div class="protocolo" id="protocoloTxt">—</div>
+      <p id="resumoTxt" style="margin:4px 0 16px"></p>
+      <p style="color:var(--cinza);font-size:14.5px;margin:0 0 18px">Status inicial: <b>PENDENTE</b>. Assim que o Pix for conferido no extrato, sua cota fica <b>PAGA</b> e entra na tabela final.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:380px;margin:0 auto">
+        <a class="btn btn-verde" id="zapOrg" target="_blank" rel="noopener">💬 Avisar a organização no WhatsApp</a>
+        <a class="btn btn-ghost hide" id="zapGrupo" target="_blank" rel="noopener">Entrar no grupo do bolão</a>
+        <button type="button" class="btn btn-ghost" id="novaInscricao">Fazer outra inscrição</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>Bolão entre amigos, sem fins lucrativos · Organização independente, sem vínculo com a Caixa · Jogue com responsabilidade.<br>Proibido para menores de 18 anos.</footer>
+<div class="toast" id="toast"></div>
+
+</body>
+</html>
