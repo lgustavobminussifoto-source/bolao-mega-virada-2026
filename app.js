@@ -106,6 +106,9 @@ function atualizar(){
   $('qtd').textContent = qtd;
   $('formula').textContent = qtd+' × '+brl(CFG.valorCota);
   $('valorTotal').textContent = brl(qtd*CFG.valorCota);
+  if($('valorPix')) $('valorPix').textContent = brl(qtd*CFG.valorCota);
+  if($('barraTotal')) $('barraTotal').textContent = qtd+' cota'+(qtd>1?'s':'')+' · '+brl(qtd*CFG.valorCota);
+  document.querySelectorAll('#atalhos button').forEach(function(b){ var q=+b.dataset.q; b.classList.toggle('on',q===qtd); b.disabled = q>max; });
   var txt = qtd+' cota'+(qtd>1?'s':'')+' · '+brl(qtd*CFG.valorCota);
   if(!enviando) $('enviar').textContent = 'Confirmar inscrição: '+txt;
   if($('confValor')) $('confValor').innerHTML = '🔎 Confira: o comprovante deve ser de <b>'+brl(qtd*CFG.valorCota)+'</b> ('+qtd+' cota'+(qtd>1?'s':'')+'). Se pagou outro valor, ajuste a quantidade de cotas no passo 2.';
@@ -211,3 +214,13 @@ $('ctaTopo').onclick=function(){ $('inscricao').scrollIntoView({behavior:'smooth
 
 CAMPOS.forEach(function(c){ $(c).addEventListener('input', salvarRascunho); });
 $('limparRascunho').onclick=function(){ limparRascunho(); $('form').reset(); qtd=1; $('avisoRascunho').classList.add('hide'); atualizar(); };
+
+document.querySelectorAll('#atalhos button').forEach(function(b){ b.onclick=function(){ qtd=+b.dataset.q; atualizar(); }; });
+(function(){
+  var barra=$('barra'); if(!barra||!('IntersectionObserver' in window)) return;
+  var visForm=false, visHero=true;
+  function upd(){ var on = !visForm && !visHero && !$('form').classList.contains('hide'); barra.classList.toggle('on',on); }
+  new IntersectionObserver(function(e){ visForm=e[0].isIntersecting; upd(); }).observe($('inscricao'));
+  new IntersectionObserver(function(e){ visHero=e[0].isIntersecting; upd(); }).observe(document.querySelector('.hero'));
+  $('barraBtn').onclick=function(){ $('inscricao').scrollIntoView({behavior:'smooth'}); };
+})();

@@ -9,8 +9,8 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Bolão entre amigos da Mega da Virada 2026">
 <meta name="theme-color" content="#0a2a20">
-<script src="qr.js?v=3" defer></script>
-<script src="app.js?v=3" defer></script>
+<script src="qr.js?v=4" defer></script>
+<script src="app.js?v=4" defer></script>
 <style>
   @font-face{font-family:Fraunces;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/fraunces-latin-600-normal.woff2) format('woff2')}
   @font-face{font-family:Fraunces;font-style:normal;font-weight:800;font-display:swap;src:url(fonts/fraunces-latin-800-normal.woff2) format('woff2')}
@@ -131,6 +131,47 @@
   .toast.on{transform:translateX(-50%) translateY(0)}
   .spinner{width:18px;height:18px;border:2.5px solid #ffffff66;border-top-color:#fff;border-radius:50%;animation:g .8s linear infinite}
   @keyframes g{to{transform:rotate(360deg)}}
+  /* ===== Refinamentos ===== */
+  body{padding-bottom:env(safe-area-inset-bottom)}
+  .hero{padding:36px 0 44px}
+  .hero h1{margin:14px 0 14px}
+  .premio{animation:brilho 6s ease-in-out infinite;background-size:200% 200%}
+  @keyframes brilho{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .kpi{backdrop-filter:blur(4px)}
+  section{padding:44px 0 4px}
+  section h2{font-size:clamp(24px,6.5vw,30px)}
+  .card{box-shadow:0 1px 0 #00000008,0 8px 24px -18px #0a2a2040;transition:transform .15s}
+  .regra h3{font-size:17px}
+  .form-box{padding:22px 18px}
+  .passo{font-size:16px}
+  label{font-size:14.5px}
+  input[type=text],input[type=tel]{min-height:50px}
+  .atalhos{display:flex;gap:8px;margin:12px 0 2px;flex-wrap:wrap}
+  .atalhos button{flex:1;min-width:56px;height:42px;border-radius:10px;border:1.5px solid var(--linha);background:#fff;font:600 15px Inter,sans-serif;color:var(--tinta);cursor:pointer}
+  .atalhos button.on{background:var(--noite);color:var(--ouro);border-color:var(--noite)}
+  .seletor button{width:54px;height:54px}
+  .pixbox{background:#f7f4ea;border-radius:16px;padding:16px}
+  .pixbox .btn{width:100%}
+  .pixbox .valor{font-family:Fraunces,serif;font-size:30px;margin:2px 0 10px}
+  .passos-pix{margin:12px 0 0;padding-left:20px;color:var(--cinza);font-size:14px}
+  .passos-pix li{margin:3px 0}
+  details.qr{background:transparent;border:1px dashed var(--linha);margin-top:12px}
+  details.qr #qr{max-width:220px;margin:12px auto 4px}
+  .upload{padding:22px}
+  #enviar{position:relative}
+  .barra{position:fixed;left:0;right:0;bottom:0;z-index:8;background:#0a2a20f2;backdrop-filter:blur(8px);color:#fff;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;
+    transform:translateY(110%);transition:transform .25s;box-shadow:0 -10px 30px -10px #0006}
+  .barra.on{transform:none}
+  .barra div{flex:1;line-height:1.2}
+  .barra small{color:#bcd0c6;font-size:12px}
+  .barra b{display:block;font-family:Fraunces,serif;color:var(--ouro);font-size:20px}
+  .barra .btn{padding:12px 18px;font-size:15px}
+  .toast{bottom:calc(84px + env(safe-area-inset-bottom))}
+  :focus-visible{outline:3px solid #f0c35a;outline-offset:2px}
+  @media (hover:hover){.card:hover{transform:translateY(-2px)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  @media (min-width:700px){.barra{display:none}}
   .hide{display:none!important}
   @media (max-width:560px){
     .grid2{grid-template-columns:1fr}
@@ -261,6 +302,7 @@
           <button type="button" id="mais" aria-label="Aumentar">+</button>
           <span style="color:var(--cinza);font-size:14px">cota(s)</span>
         </div>
+        <div class="atalhos" id="atalhos"><button type="button" data-q="1">1</button><button type="button" data-q="2">2</button><button type="button" data-q="4">4</button><button type="button" data-q="10">10</button></div>
         <div class="total">
           <div><small>Valor do seu Pix</small><br><span id="formula" style="font-size:13px;color:#bcd0c6">1 × R$ 25,00</span></div>
           <b id="valorTotal">R$ 25,00</b>
@@ -269,19 +311,24 @@
 
       <div class="bloco">
         <div class="passo"><i>3</i> Faça o Pix</div>
-        <div class="pix">
-          <div id="qr" aria-label="QR Code Pix"></div>
-          <div>
-            <div style="font-size:13px;color:var(--cinza);margin-bottom:4px">Chave Pix do bolão</div>
-            <div class="chave" id="chaveTxt">—</div>
-            <div class="info-titular" id="titularTxt"></div>
-            <div class="btns">
-              <button type="button" class="btn btn-verde" id="copiarCola">📋 Copiar Pix Copia e Cola (com valor)</button>
-              <button type="button" class="btn btn-ghost" id="copiarChave">Copiar só a chave Pix</button>
-            </div>
-          </div>
+        <div class="pixbox">
+          <div style="font-size:13px;color:var(--cinza)">Valor do Pix</div>
+          <div class="valor" id="valorPix">R$ 25,00</div>
+          <button type="button" class="btn btn-verde" id="copiarCola">📋 Copiar Pix Copia e Cola</button>
+          <ol class="passos-pix">
+            <li>Toque no botão acima (o código já vai com o valor certo)</li>
+            <li>Abra o app do seu banco › <b>Pix › Pix Copia e Cola</b></li>
+            <li>Cole, confira o recebedor <b id="titularConf">—</b> e pague</li>
+            <li>Volte aqui e envie o comprovante (seus dados ficam salvos)</li>
+          </ol>
         </div>
-        <div class="aviso">💡 O <b>Pix Copia e Cola</b> já vai com o valor certo. Cole no app do seu banco, em Pix › Copia e Cola. Confira se o recebedor é <b id="titularConf">—</b> antes de confirmar.</div>
+        <details class="qr"><summary>Pagar por outro aparelho (QR Code ou chave)</summary>
+          <div id="qr" aria-label="QR Code Pix"></div>
+          <div style="font-size:13px;color:var(--cinza);margin:10px 0 4px">Chave Pix (celular)</div>
+          <div class="chave" id="chaveTxt">—</div>
+          <div class="info-titular" id="titularTxt"></div>
+          <button type="button" class="btn btn-ghost" id="copiarChave" style="width:100%;margin-top:10px">Copiar só a chave</button>
+        </details>
       </div>
 
       <div class="bloco">
@@ -322,6 +369,7 @@
 
 <footer>Bolão entre amigos, sem fins lucrativos · Organização independente, sem vínculo com a Caixa · Jogue com responsabilidade.<br>Proibido para menores de 18 anos.</footer>
 <div class="toast" id="toast"></div>
+<div class="barra" id="barra" aria-hidden="true"><div><small>Sua seleção</small><b id="barraTotal">1 cota · R$ 25,00</b></div><button type="button" class="btn btn-ouro" id="barraBtn">Participar</button></div>
 
 </body>
 </html>
