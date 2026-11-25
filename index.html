@@ -9,8 +9,8 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Bolão entre amigos da Mega da Virada 2026">
 <meta name="theme-color" content="#0a2a20">
-<script src="qr.js?v=5" defer></script>
-<script src="app.js?v=5" defer></script>
+<script src="qr.js?v=6" defer></script>
+<script src="app.js?v=6" defer></script>
 <style>
   @font-face{font-family:Fraunces;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/fraunces-latin-600-normal.woff2) format('woff2')}
   @font-face{font-family:Fraunces;font-style:normal;font-weight:800;font-display:swap;src:url(fonts/fraunces-latin-800-normal.woff2) format('woff2')}
@@ -172,6 +172,21 @@
   @media (hover:hover){.card:hover{transform:translateY(-2px)}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
   @media (min-width:700px){.barra{display:none}}
+  .btn-hero{width:100%;max-width:420px;font-size:17px;padding:17px 22px;box-shadow:0 10px 30px -10px #f0c35a}
+  .confia{font-size:13px;color:#c4d6cd;margin:10px 0 0}
+  .passos3{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .passos3 li{display:flex;gap:14px;align-items:flex-start;background:var(--papel);border:1px solid var(--linha);border-radius:var(--r);padding:14px 16px}
+  .passos3 i{font-style:normal;flex:0 0 32px;height:32px;border-radius:50%;background:var(--noite);color:var(--ouro);display:grid;place-items:center;font-weight:700}
+  .passos3 b{display:block;font-size:16px}
+  .passos3 span{color:var(--cinza);font-size:14.5px}
+  @media (min-width:700px){.passos3{grid-template-columns:repeat(3,1fr)}.passos3 li{flex-direction:column}}
+  .cta-meio{text-align:center;margin:18px 0 0}
+  .cta-meio .btn{width:100%;max-width:420px}
+  .nota{color:var(--cinza);font-size:13.5px;margin:12px 2px 0;text-align:center}
+  .intro-form{color:var(--cinza);margin:-6px 0 14px;font-size:15px}
+  details.mini{background:transparent;border:0;padding:0;margin:14px 0 0}
+  details.mini summary{font-weight:500;font-size:14px;color:var(--verde)}
+  details.mini summary:after{float:none;margin-left:6px}
   .hide{display:none!important}
   @media (max-width:560px){
     .grid2{grid-template-columns:1fr}
@@ -188,7 +203,7 @@
     <span class="selo">🍀 Bolão entre amigos · Bolão Oficial Caixa</span>
     <h1>Mega da Virada <em>2026</em></h1>
     <div class="premio"><small>Prêmio estimado pela Caixa</small><b>+ de R$ 1 bilhão</b><span>Sorteio em 1º de janeiro de 2027, às 11h · o prêmio não acumula</span></div>
-    <p class="sub">Cota de <b class="js-valor">R$ 25,00</b>, sem taxa nenhuma: 100% do dinheiro vira aposta oficial registrada na lotérica. Você recebe no seu WhatsApp a foto de todos os bilhetes e os seus recibos.</p>
+    <p class="sub">Entre com <b class="js-valor">R$ 25,00</b> por cota. Sem taxa: 100% vira aposta oficial registrada na lotérica, com recibo no seu nome.</p>
 
     <div class="kpis">
       <div class="kpi"><b class="js-valor">R$ 25</b><span>por cota</span></div>
@@ -205,84 +220,39 @@
         <div><b id="cd-s">--</b><small>seg</small></div>
       </div>
     </div>
-    <button type="button" class="btn btn-ouro" id="ctaTopo">Quero minhas cotas →</button>
+    <button type="button" class="btn btn-ouro btn-hero" id="ctaTopo">Garantir minha cota →</button>
+    <p class="confia">🔒 Pix direto · recibo oficial da Caixa · leva 2 minutos</p>
   </div>
 </header>
 
 <main class="wrap">
+  <section class="passos3-sec">
+    <div class="rotulo">Como participar</div>
+    <h2>3 passos, 2 minutos</h2>
+    <ol class="passos3">
+      <li><i>1</i><div><b>Preencha e escolha as cotas</b><span>Nome, CPF e WhatsApp, para os recibos saírem no seu nome.</span></div></li>
+      <li><i>2</i><div><b>Pague com Pix Copia e Cola</b><span>O código já vem com o valor certo. É só colar no app do banco.</span></div></li>
+      <li><i>3</i><div><b>Envie o comprovante</b><span>Antes do sorteio você recebe no WhatsApp as fotos dos bilhetes e dos seus recibos.</span></div></li>
+    </ol>
+  </section>
+
   <section>
     <div class="rotulo">Vale a pena?</div>
     <h2>Por que entrar no bolão</h2>
     <div class="grid2">
-      <div class="card"><h3>🎯 Mais chances pelo mesmo valor</h3><p>Com R$ 25 sozinho você faz 4 apostas simples. No bolão, sua cota participa de jogos com 8 ou 10 dezenas, que cobrem centenas de combinações. Você divide o prêmio, mas a chance de o grupo acertar é muito maior.</p></div>
-      <div class="card"><h3>🏅 Também vale quina e quadra</h3><p>Jogos com mais dezenas multiplicam os prêmios menores. Se as dezenas caírem num jogo de 10, ele paga a sena e ainda várias quinas e quadras ao mesmo tempo.</p></div>
+      <div class="card"><h3>🎯 Mais chances pelo mesmo valor</h3><p>Sozinho, R$ 25 pagam 4 apostas simples. No bolão, o dinheiro de todos vira jogos com mais dezenas, que cobrem muito mais combinações. Você divide o prêmio, mas a chance de o grupo acertar é bem maior.</p></div>
+      <div class="card"><h3>🏅 Também vale quina e quadra</h3><p>Jogos com mais dezenas multiplicam os prêmios menores: um mesmo jogo pode pagar várias quinas e quadras de uma vez.</p></div>
       <div class="card"><h3>🧾 Seguro e no seu nome</h3><p>Bolão Oficial da Caixa, registrado em lotérica. Cada cota sua tem recibo próprio com seu nome e CPF, e você resgata a sua parte direto na Caixa.</p></div>
       <div class="card"><h3>📲 Sem trabalho nenhum</h3><p>É só fazer o Pix. A organização registra os jogos, guarda os recibos e manda tudo no seu WhatsApp antes do sorteio.</p></div>
     </div>
-    <p style="color:var(--cinza);font-size:13.5px;margin:12px 2px 0">Loteria é sorte: ninguém garante prêmio. Entre com o valor que você gastaria por diversão.</p>
-  </section>
-
-
-  <section>
-    <div class="rotulo">Regras</div>
-    <h2>Como funciona</h2>
-    <div class="cards">
-      <div class="card regra"><div class="ic">🎟️</div><div><h3>Cada cota custa <span class="js-valor">R$ 25,00</span></h3><p>Até 20 por inscrição (quer mais, faça outra). O bolão tem <b>limite de 100 cotas no total</b>, por ordem de inscrição. Não existe taxa administrativa: 100% do valor arrecadado vira aposta oficial.</p></div></div>
-      <div class="card regra"><div class="ic">⏰</div><div><h3>Prazo: 20/12/2026 às 20h00</h3><p>Inscrição e Pix até esse horário, sem prorrogação. Pix que chegar depois será devolvido.</p></div></div>
-      <div class="card regra"><div class="ic">⚖️</div><div><h3>Prêmio proporcional às cotas</h3><p>Sua parte = suas cotas ÷ total de cotas confirmadas. Ex.: com 100 cotas, cada cota vale 1% de qualquer prêmio. Se fôssemos os únicos acertadores de R$ 1 bilhão, isso daria cerca de R$ 10 milhões por cota.</p></div></div>
-      <div class="card regra"><div class="ic">✅</div><div><h3>Só vale cota paga e conferida</h3><p>Cada Pix é conferido no extrato bancário. Sua cota passa a valer quando o status fica <b>PAGO</b>.</p></div></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="rotulo">Estratégia</div>
-    <h2>Como os jogos serão feitos</h2>
-    <div class="grid2">
-      <div class="card"><h3>🎯 Jogos múltiplos</h3><p>Com o caixa fechado, montamos volantes com mais dezenas (8, 9, 10…), que multiplicam as combinações cobertas.</p></div>
-      <div class="card"><h3>🎲 Ninguém escolhe os números</h3><p>Os jogos são gerados por computador, de forma aleatória. Sem palpites, sem datas de aniversário e sem preferência de ninguém.</p></div>
-      <div class="card"><h3>🪙 Jogos de 8+ dezenas</h3><p>Pela regra da Caixa, bolões com muitas cotas usam jogos de 8 dezenas ou mais. A combinação escolhida aproveita o máximo do caixa, e o que sobrar vira apostas extras na lotérica até zerar. Tudo aparece na prestação de contas.</p></div>
-      <div class="card"><h3>📋 Planilha de controle</h3><p>Orçamento, custo de cada jogo e divisão do prêmio ficam numa planilha que fecha centavo por centavo.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="rotulo">Cronograma</div>
-    <h2>Datas</h2>
-    <div class="linha-tempo">
-      <div class="marco"><b>Agora até 20/12 · 20h00</b><span>Inscrição neste formulário + Pix + comprovante.</span></div>
-      <div class="marco"><b>21/12 ou 22/12</b><span>Registro presencial dos jogos em lotérica credenciada, como Bolão Oficial da Caixa.</span></div>
-      <div class="marco destaque"><b>Até 22/12 · 18h00</b><span>Você recebe no WhatsApp cadastrado: fotos de todos os bilhetes oficiais, a tabela final com o % de cada participante e a foto dos seus recibos.</span></div>
-      <div class="marco"><b>1º/01/2027 · 11h</b><span>Sorteio da Mega da Virada (a Caixa transferiu o sorteio de 31/12 para o dia 1º). 🎆</span></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="rotulo">Transparência</div>
-    <h2>Recibos e segurança</h2>
-    <div class="cards">
-      <div class="card"><p>📸 <b>Todos recebem a mesma prestação de contas</b> no WhatsApp cadastrado, antes do sorteio: fotos de <b>todos</b> os bilhetes e a tabela com nome, cotas e % de cada participante. A tabela não leva CPF nem telefone de ninguém.</p></div>
-      <div class="card"><p>🔒 <b>Seus dados ficam protegidos.</b> CPF, WhatsApp e comprovante vão direto para uma planilha e uma pasta privadas da organização. Não são publicados, não são compartilhados e servem só para os recibos e a prestação de contas do bolão. Esta página não usa cookies nem rastreadores.</p></div>
-      <div class="card"><p>🧾 <b>1 cota sua = 1 recibo oficial da Caixa em cada bolão.</b> Cada bolão é registrado na lotérica com exatamente o total de cotas do grupo. Os recibos ficam guardados com a organização, com seu <b>Nome Completo e CPF</b> no verso (por isso pedimos o CPF). Se sair prêmio, você recebe os seus recibos e resgata a sua parte direto na Caixa, no seu nome.</p></div>
-      <div class="card"><p>🔍 <b>Dupla conferência</b>: comprovante enviado por você + conferência no extrato do banco. A planilha só soma cotas com Pix confirmado.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="rotulo">Dúvidas</div>
-    <h2>Perguntas frequentes</h2>
-    <details><summary>Posso pagar pela conta de outra pessoa?</summary><p>Pode. Só preencha o campo "Titular da conta pagadora" com o nome de quem fez o Pix, para conseguirmos achar no extrato.</p></details>
-    <details><summary>Quero mais de 20 cotas. E agora?</summary><p>Faça uma segunda inscrição com o mesmo CPF. As cotas são somadas automaticamente pelo CPF.</p></details>
-    <details><summary>Meu recibo oficial é individual?</summary><p>Sim. Cada bolão é registrado com o mesmo número de cotas do grupo (no máximo 100), então cada cota sua vale 1 recibo da Caixa em cada bolão. Em caso de prêmio, você resgata a sua parte direto na Caixa, sem precisar de repasse de ninguém.</p></details>
-    <details><summary>Por que o limite de 100 cotas?</summary><p>É o máximo de cotas que a Caixa permite num bolão oficial. Com esse teto, cada cota do grupo vira exatamente um recibo oficial. Quando acabar, a página mostra "esgotado".</p></details>
-    <details><summary>Se ganharmos, como o prêmio é dividido?</summary><p>Na proporção exata das cotas pagas: suas cotas ÷ total de cotas confirmadas. A tabela com o % de todos é enviada no WhatsApp de cada participante antes do sorteio.</p></details>
-    <details><summary>O prêmio tem imposto?</summary><p>A Caixa já desconta na fonte os 30% de Imposto de Renda antes de pagar. Como cada participante resgata a própria parte com os seus recibos, ninguém precisa repassar dinheiro a ninguém. Só é preciso informar o valor recebido na sua declaração de IR.</p></details>
-    <details><summary>Quais as chances de ganhar?</summary><p>Loteria é sorte. Com R$ 2.500 em jogos de 8 e 10 dezenas, o grupo cobre cerca de 400 combinações, o que dá uma chance de cerca de 1 em 123 mil de acertar a sena. É muito melhor que uma aposta simples (1 em 50 milhões), mas continua sendo pequena. Jogue só o que pode gastar por diversão.</p></details>
-    <details><summary>E se eu pagar depois das 20h do dia 20/12?</summary><p>O Pix será devolvido. Depois desse horário o caixa fecha e os jogos são montados com o valor exato arrecadado.</p></details>
+    <div class="cta-meio"><button type="button" class="btn btn-ouro" id="ctaMeio">Quero participar →</button></div>
+    <p class="nota">Loteria é sorte: ninguém garante prêmio. Entre com o valor que você gastaria por diversão.</p>
   </section>
 
   <section id="inscricao">
     <div class="rotulo">Inscrição</div>
     <h2>Garanta suas cotas</h2>
+    <p class="intro-form">Leva uns 2 minutos. Seus dados ficam salvos se você sair para pagar no app do banco.</p>
 
     <div id="avisoConfig" class="aviso erro hide">⚠️ <b>Modo de configuração:</b> a chave Pix ainda não foi preenchida no CONFIG do script. Não divulgue o link antes de ajustar.</div>
     <div id="encerrado" class="aviso erro hide">🔒 <b>Adesões encerradas</b> em 20/12/2026 às 20h00. Você vai receber as fotos dos bilhetes no seu WhatsApp.</div>
@@ -303,8 +273,10 @@
       <div class="msg-campo" data-for="whatsapp"></div>
 
       <div class="hp" aria-hidden="true"><label for="site">Não preencha</label><input type="text" id="site" tabindex="-1" autocomplete="off"></div>
-      <label for="titular">Titular da conta pagadora <small>(só se o Pix sair da conta de outra pessoa)</small></label>
-      <input type="text" id="titular" placeholder="Deixe em branco se for você mesmo">
+      <details class="mini" id="boxTitular"><summary>O Pix vai sair da conta de outra pessoa ou empresa?</summary>
+        <label for="titular">Nome do titular da conta que vai pagar</label>
+        <input type="text" id="titular" placeholder="Ex.: nome da pessoa ou da empresa">
+      </details>
 
       <div class="bloco">
         <div class="passo"><i>2</i> Quantas cotas?</div>
@@ -350,9 +322,10 @@
           <div id="uploadTxt">📎 <b>Toque para anexar o comprovante</b><br><small style="color:var(--cinza)">Print ou PDF, até 8 MB</small></div>
         </label>
         <div class="aviso" id="confValor"></div>
-        <p class="ou">ou, se preferir,</p>
-        <label for="txid">ID da transação Pix <small>(código E2E que aparece no comprovante)</small></label>
-        <input type="text" id="txid" placeholder="Ex.: E12345678202612201930abcdEFGH123">
+        <details class="mini" id="boxTxid"><summary>Não consegue anexar? Informe o ID da transação</summary>
+          <label for="txid">ID da transação Pix <small>(código E2E que aparece no comprovante)</small></label>
+          <input type="text" id="txid" placeholder="Ex.: E12345678202612201930abcdEFGH123">
+        </details>
         <div class="msg-campo" data-for="comprovante"></div>
 
         <label class="check" style="margin-top:16px"><input type="checkbox" id="aceite"> <span>Li e concordo com as regras: prazo improrrogável, divisão proporcional às cotas e uso do meu Nome/CPF apenas nos recibos do bolão.</span></label>
@@ -376,6 +349,52 @@
         <button type="button" class="btn btn-ghost" id="novaInscricao">Fazer outra inscrição</button>
       </div>
     </div>
+  </section>
+
+  <section>
+    <div class="rotulo">Regras</div>
+    <h2>Como funciona</h2>
+    <div class="cards">
+      <div class="card regra"><div class="ic">🎟️</div><div><h3>Cota de <span class="js-valor">R$ 25,00</span>, sem taxa</h3><p>Até 20 cotas por inscrição (quer mais, faça outra). Limite de <b>100 cotas no total</b>, por ordem de inscrição. 100% do valor vira aposta oficial.</p></div></div>
+      <div class="card regra"><div class="ic">⏰</div><div><h3>Prazo: 20/12/2026 às 20h00</h3><p>Inscrição e Pix até esse horário, sem prorrogação. Pix que chegar depois é devolvido.</p></div></div>
+      <div class="card regra"><div class="ic">⚖️</div><div><h3>Prêmio proporcional às cotas</h3><p>Sua parte = suas cotas ÷ total de cotas do grupo. Ex.: com 100 cotas, cada uma vale 1% do prêmio. Se fôssemos os únicos ganhadores de R$ 1 bilhão, seriam cerca de R$ 10 milhões brutos por cota (perto de R$ 7 milhões após os 30% de IR).</p></div></div>
+      <div class="card regra"><div class="ic">🧮</div><div><h3>Divisão sempre exata</h3><p>Para cada cota ter seu recibo oficial, o valor dos jogos precisa dividir exato pelo total de cotas. Se o total vendido não permitir, a organização compra as cotas que faltarem, sem custo para ninguém, e elas entram na tabela final.</p></div></div>
+      <div class="card regra"><div class="ic">✅</div><div><h3>Só vale cota paga e conferida</h3><p>Cada Pix é conferido no extrato bancário. Sua cota passa a valer quando o status fica <b>PAGO</b>.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rotulo">Cronograma</div>
+    <h2>Datas</h2>
+    <div class="linha-tempo">
+      <div class="marco"><b>Agora até 20/12 · 20h00</b><span>Inscrição + Pix + comprovante.</span></div>
+      <div class="marco"><b>21/12 ou 22/12</b><span>Registro dos jogos em lotérica, como Bolão Oficial da Caixa.</span></div>
+      <div class="marco destaque"><b>Até 22/12 · 18h00</b><span>No seu WhatsApp: fotos de todos os bilhetes, a tabela final com o % de cada participante e a foto dos seus recibos.</span></div>
+      <div class="marco"><b>1º/01/2027 · 11h</b><span>Sorteio da Mega da Virada. 🎆</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rotulo">Transparência</div>
+    <h2>Jogos, recibos e seus dados</h2>
+    <div class="cards">
+      <div class="card"><p>🎲 <b>Ninguém escolhe os números.</b> Os jogos são gerados por computador, de forma aleatória, usando o máximo possível do valor arrecadado. O que sobrar vira apostas extras na lotérica, e tudo aparece na prestação de contas.</p></div>
+      <div class="card"><p>📸 <b>Todos recebem a mesma prestação de contas</b> antes do sorteio: fotos de todos os bilhetes e a tabela com nome, cotas e % de cada um. A tabela não leva CPF nem telefone de ninguém.</p></div>
+      <div class="card"><p>🔒 <b>Seus dados ficam protegidos.</b> CPF, WhatsApp e comprovante vão para uma planilha e uma pasta privadas da organização, usadas só para os recibos e a prestação de contas. Tudo é apagado 90 dias após o sorteio (fim do prazo de resgate da Caixa). Esta página não usa cookies nem rastreadores.</p></div>
+      <div class="card"><p>🔍 <b>Dupla conferência:</b> comprovante enviado por você + conferência no extrato do banco.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rotulo">Dúvidas</div>
+    <h2>Perguntas frequentes</h2>
+    <details><summary>Posso pagar pela conta de outra pessoa ou empresa?</summary><p>Pode. No formulário, toque em "O Pix vai sair da conta de outra pessoa ou empresa?" e informe o nome do titular, para acharmos o pagamento no extrato.</p></details>
+    <details><summary>Quero mais de 20 cotas. E agora?</summary><p>Faça uma segunda inscrição com o mesmo CPF. As cotas são somadas pelo CPF.</p></details>
+    <details><summary>Meu recibo oficial é individual?</summary><p>Sim. Cada bolão é registrado com o mesmo número de cotas do grupo, então cada cota sua vale 1 recibo da Caixa em cada bolão. Em caso de prêmio, você resgata a sua parte direto na Caixa.</p></details>
+    <details><summary>Por que o limite de 100 cotas?</summary><p>É o máximo que a Caixa permite num bolão oficial. Com esse teto, cada cota vira exatamente um recibo. Quando acabar, a página mostra "esgotado".</p></details>
+    <details><summary>O prêmio tem imposto?</summary><p>A Caixa já desconta na fonte 30% de Imposto de Renda antes de pagar. Como cada um resgata a própria parte, ninguém precisa repassar dinheiro a ninguém. Só é preciso informar o valor recebido na sua declaração de IR.</p></details>
+    <details><summary>Quais as chances de ganhar?</summary><p>Depende do total arrecadado. Se as 100 cotas forem vendidas (R$ 2.500), os jogos cobrem cerca de 400 combinações: chance de cerca de 1 em 125 mil de acertar a sena, contra 1 em 50 milhões de uma aposta simples. Continua sendo pequena: jogue só o que pode gastar por diversão.</p></details>
+    <details><summary>E se eu pagar depois das 20h do dia 20/12?</summary><p>O Pix é devolvido. Nesse horário o caixa fecha e os jogos são montados com o valor exato arrecadado.</p></details>
   </section>
 </main>
 

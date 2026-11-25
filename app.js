@@ -75,6 +75,8 @@ chamar('getDadosPublicos').then(function(c){
   if(r){
     qtd = parseInt(r.qtd,10) || 1;
     CAMPOS.forEach(function(c){ if(r[c]) $(c).value = r[c]; });
+    if(r.titular) $('boxTitular').open=true;
+    if(r.txid) $('boxTxid').open=true;
     if((r.nome || r.qtd>1) && $('avisoRascunho')){ $('avisoRascunho').classList.remove('hide'); }
   }
   atualizar(); contagem(); setInterval(contagem,1000);
@@ -82,9 +84,9 @@ chamar('getDadosPublicos').then(function(c){
 
 function esc(s){return String(s||'').replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
 
-function encerrar(){ $('encerrado').classList.remove('hide'); $('form').classList.add('hide'); $('ctaTopo').textContent='Adesões encerradas'; $('contagemBox').classList.add('hide'); }
+function encerrar(){ $('encerrado').classList.remove('hide'); $('form').classList.add('hide'); $('ctaTopo').textContent='Adesões encerradas'; $('ctaMeio').classList.add('hide'); $('contagemBox').classList.add('hide'); }
 
-function esgotar(){ var el=$('encerrado'); el.innerHTML='🎟️ <b>Bolão esgotado:</b> as '+(CFG.limiteTotal||100)+' cotas já foram reservadas. Se alguém desistir, a vaga volta a aparecer aqui.'; el.classList.remove('hide'); $('form').classList.add('hide'); $('ctaTopo').textContent='Cotas esgotadas'; }
+function esgotar(){ var el=$('encerrado'); el.innerHTML='🎟️ <b>Bolão esgotado:</b> as '+(CFG.limiteTotal||100)+' cotas já foram reservadas. Se alguém desistir, a vaga volta a aparecer aqui.'; el.classList.remove('hide'); $('form').classList.add('hide'); $('ctaTopo').textContent='Cotas esgotadas'; $('ctaMeio').classList.add('hide'); }
 
 function contagem(){
   if(!CFG) return;
@@ -211,6 +213,7 @@ $('novaInscricao').onclick=function(){
 };
 
 $('ctaTopo').onclick=function(){ $('inscricao').scrollIntoView({behavior:'smooth'}); };
+$('ctaMeio').onclick=function(){ $('inscricao').scrollIntoView({behavior:'smooth'}); };
 
 CAMPOS.forEach(function(c){ $(c).addEventListener('input', salvarRascunho); });
 $('limparRascunho').onclick=function(){ limparRascunho(); $('form').reset(); qtd=1; $('avisoRascunho').classList.add('hide'); atualizar(); };
