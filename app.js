@@ -26,6 +26,22 @@ function pixPayload(chave,nome,cidade,valor,descricao,txid){
 }
 
 /* ================== Estado ================== */
+/* Rascunho: guarda o que a pessoa preencheu NO PRÓPRIO CELULAR (por até 24h),
+   para não perder nada quando ela sai para o app do banco e a página recarrega.
+   É apagado assim que a inscrição é concluída. */
+var CHAVE_RASCUNHO = 'bolao26_rascunho', CAMPOS = ['nome','cpf','whatsapp','titular','txid'];
+var concluido = false;
+function salvarRascunho(){
+  if(concluido) return;
+  try{ var r={t:Date.now(),qtd:qtd}; CAMPOS.forEach(function(c){ r[c]=$(c).value; });
+       localStorage.setItem(CHAVE_RASCUNHO, JSON.stringify(r)); }catch(e){}
+}
+function lerRascunho(){
+  try{ var r=JSON.parse(localStorage.getItem(CHAVE_RASCUNHO)||'null');
+       return (r && Date.now()-r.t < 86400000) ? r : null; }catch(e){ return null; }
+}
+function limparRascunho(){ try{ localStorage.removeItem(CHAVE_RASCUNHO); }catch(e){} }
+
 var CFG = null, qtd = 1, arquivoSel = null, idem = gerarId(), enviando = false;
 function gerarId(){return 'x'+Date.now().toString(36)+Math.random().toString(36).slice(2,10);}
 function $(id){return document.getElementById(id);}
@@ -55,6 +71,12 @@ chamar('getDadosPublicos').then(function(c){
   if(!c.pixConfigurado) $('avisoConfig').classList.remove('hide');
   if(c.encerrado) encerrar();
   if(c.linkGrupo){ $('zapGrupo').href=c.linkGrupo; $('zapGrupo').classList.remove('hide'); }
+  var r = lerRascunho();
+  if(r){
+    qtd = parseInt(r.qtd,10) || 1;
+    CAMPOS.forEach(function(c){ if(r[c]) $(c).value = r[c]; });
+    if(r.nome || r.qtd>1){ $('avisoRascunho').classList.remove('hide'); }
+  }
   atualizar(); contagem(); setInterval(contagem,1000);
 }).catch(function(e){ mostrarErro('Não consegui carregar os dados do bolão. Recarregue a página. ('+e.message+')'); });
 
@@ -84,6 +106,10 @@ function atualizar(){
   $('qtd').textContent = qtd;
   $('formula').textContent = qtd+' × '+brl(CFG.valorCota);
   $('valorTotal').textContent = brl(qtd*CFG.valorCota);
+  var txt = qtd+' cota'+(qtd>1?'s':'')+' · '+brl(qtd*CFG.valorCota);
+  if(!enviando) $('enviar').textContent = 'Confirmar inscrição: '+txt;
+  $('confValor').innerHTML = '🔎 Confira: o comprovante deve ser de <b>'+brl(qtd*CFG.valorCota)+'</b> ('+qtd+' cota'+(qtd>1?'s':'')+'). Se pagou outro valor, ajuste a quantidade de cotas no passo 2.';
+  salvarRascunho();
   $('menos').disabled = qtd<=1; $('mais').disabled = qtd>=max;
   try{
     var q = qrcode(0,'M'); q.addData(payloadAtual()); q.make();
@@ -162,6 +188,7 @@ $('form').addEventListener('submit',function(ev){
       txid:$('txid').value.trim(), consentimento:$('aceite').checked, arquivo:arq, site:$('site').value
     });
   }).then(function(r){
+    concluido = true; limparRascunho();
     $('form').classList.add('hide'); $('sucesso').classList.remove('hide');
     $('protocoloTxt').textContent=r.protocolo;
     $('resumoTxt').innerHTML='<b>'+r.cotas+' cota'+(r.cotas>1?'s':'')+'</b> · '+brl(r.valor);
@@ -170,14 +197,17 @@ $('form').addEventListener('submit',function(ev){
     $('sucesso').scrollIntoView({behavior:'smooth',block:'start'});
   }).catch(function(e){
     mostrarErro('⚠️ '+(e.message||e)+' Tente de novo; se persistir, chame a organização no WhatsApp.');
-  }).then(function(){ enviando=false; btn.disabled=false; btn.textContent='Confirmar inscrição'; });
+  }).then(function(){ enviando=false; btn.disabled=false; atualizar(); });
 });
 
 $('novaInscricao').onclick=function(){
-  idem=gerarId(); arquivoSel=null; $('form').reset(); qtd=1; atualizar();
+  idem=gerarId(); arquivoSel=null; concluido=false; $('form').reset(); qtd=1; limparRascunho(); $('avisoRascunho').classList.add('hide'); atualizar();
   $('uploadBox').classList.remove('ok'); $('uploadTxt').innerHTML='📎 <b>Toque para anexar o comprovante</b><br><small style="color:var(--cinza)">Print ou PDF, até 8 MB</small>';
   $('sucesso').classList.add('hide'); $('form').classList.remove('hide');
   $('form').scrollIntoView({behavior:'smooth'});
 };
 
 $('ctaTopo').onclick=function(){ $('inscricao').scrollIntoView({behavior:'smooth'}); };
+
+CAMPOS.forEach(function(c){ $(c).addEventListener('input', salvarRascunho); });
+$('limparRascunho').onclick=function(){ limparRascunho(); $('form').reset(); qtd=1; $('avisoRascunho').classList.add('hide'); atualizar(); };

@@ -234,6 +234,7 @@
     <div id="avisoConfig" class="aviso erro hide">⚠️ <b>Modo de configuração:</b> a chave Pix ainda não foi preenchida no CONFIG do script. Não divulgue o link antes de ajustar.</div>
     <div id="encerrado" class="aviso erro hide">🔒 <b>Adesões encerradas</b> em 20/12/2026 às 20h00. Você vai receber as fotos dos bilhetes no seu WhatsApp.</div>
 
+    <div id="avisoRascunho" class="aviso hide">↩️ Recuperamos o que você já tinha preenchido (inclusive a quantidade de cotas). <button type="button" id="limparRascunho" style="background:none;border:0;color:var(--verde);font-weight:600;text-decoration:underline;cursor:pointer;padding:0">Começar do zero</button></div>
     <form id="form" class="form-box" novalidate>
       <div class="passo"><i>1</i> Seus dados</div>
       <label for="nome">Nome completo</label>
@@ -289,6 +290,7 @@
           <input type="file" id="arquivo" accept="image/*,application/pdf">
           <div id="uploadTxt">📎 <b>Toque para anexar o comprovante</b><br><small style="color:var(--cinza)">Print ou PDF, até 8 MB</small></div>
         </label>
+        <div class="aviso" id="confValor"></div>
         <p class="ou">ou, se preferir,</p>
         <label for="txid">ID da transação Pix <small>(código E2E que aparece no comprovante)</small></label>
         <input type="text" id="txid" placeholder="Ex.: E12345678202612201930abcdEFGH123">
