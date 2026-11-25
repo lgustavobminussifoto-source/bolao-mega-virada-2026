@@ -75,7 +75,7 @@ chamar('getDadosPublicos').then(function(c){
   if(r){
     qtd = parseInt(r.qtd,10) || 1;
     CAMPOS.forEach(function(c){ if(r[c]) $(c).value = r[c]; });
-    if(r.nome || r.qtd>1){ $('avisoRascunho').classList.remove('hide'); }
+    if((r.nome || r.qtd>1) && $('avisoRascunho')){ $('avisoRascunho').classList.remove('hide'); }
   }
   atualizar(); contagem(); setInterval(contagem,1000);
 }).catch(function(e){ mostrarErro('Não consegui carregar os dados do bolão. Recarregue a página. ('+e.message+')'); });
@@ -108,7 +108,7 @@ function atualizar(){
   $('valorTotal').textContent = brl(qtd*CFG.valorCota);
   var txt = qtd+' cota'+(qtd>1?'s':'')+' · '+brl(qtd*CFG.valorCota);
   if(!enviando) $('enviar').textContent = 'Confirmar inscrição: '+txt;
-  $('confValor').innerHTML = '🔎 Confira: o comprovante deve ser de <b>'+brl(qtd*CFG.valorCota)+'</b> ('+qtd+' cota'+(qtd>1?'s':'')+'). Se pagou outro valor, ajuste a quantidade de cotas no passo 2.';
+  if($('confValor')) $('confValor').innerHTML = '🔎 Confira: o comprovante deve ser de <b>'+brl(qtd*CFG.valorCota)+'</b> ('+qtd+' cota'+(qtd>1?'s':'')+'). Se pagou outro valor, ajuste a quantidade de cotas no passo 2.';
   salvarRascunho();
   $('menos').disabled = qtd<=1; $('mais').disabled = qtd>=max;
   try{
